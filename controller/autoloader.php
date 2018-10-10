@@ -7,7 +7,7 @@ class autoloader {
 		spl_autoload_register('autoloader::autoload_controller');
 		spl_autoload_register('autoloader::autoload_view');
 		spl_autoload_register('autoloader::autoload_model');
-		spl_autoload_register('autoloader::autoload_utils');
+		spl_autoload_register('autoloader::autoload_tests');
 	}
 
 	public static function autoload_controller($class) {
@@ -28,10 +28,10 @@ class autoloader {
 			require $_SERVER['DOCUMENT_ROOT'] . $path . "/model/{$class}.php";
 		}
 	}
-	public static function autoload_utils($class) {
+	public static function autoload_tests($class) {
 		$path = "";
-		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/utils/{$class}.php")) {
-			require $_SERVER['DOCUMENT_ROOT'] . $path . "/utils/{$class}.php";
+		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/test/{$class}.php")) {
+			require $_SERVER['DOCUMENT_ROOT'] . $path . "/test/{$class}.php";
 		}
 	}
 

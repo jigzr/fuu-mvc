@@ -1,3 +1,4 @@
+{config_load file='site.conf'}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
