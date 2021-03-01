@@ -9,14 +9,29 @@ class controller {
 		$autoloader = new autoloader();
 
 		//initialize the view class
-		$view = new view();
+		
 	}
 
 	public function initialize() {
 		//do app controlling events here
 		if($this->sanitizeRequest()){
-			//throw 404 or do nothing
-			echo 'cant use get request';
+			if(sizeof($_GET) > 0){
+				if(isset($_GET['q'])){
+					if ($_GET['q'] == 1) { // select
+
+					} else if ($_GET['q'] == 2) { // insert
+
+					} else if ($_GET['q'] == 3) { // update
+
+					} else {
+						// do nothing
+					}
+				} else {
+					// do nothing
+				}
+			} else {
+				$view = new view();
+			}
 		}
 		else{
 			echo 'post request only';

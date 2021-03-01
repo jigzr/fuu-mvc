@@ -1,0 +1,18 @@
+body{
+    overflow-x:hidden;
+}
+.bio-left,
+.bio-right{
+    background: #fff;
+}
+.bio-right{
+    height:100vh;
+    padding: 1em;
+}
+.bio-right {
+    color: #000;
+    text-align: center;
+}
+.tile_count{
+    text-align: center;
+}

@@ -5,13 +5,14 @@ class view {
 
 	public function __construct() {
 		//set routes first
-		$routes = new routes();
-		var_dump($routes);
+		//$routes = new routes();
+		//var_dump($routes);
+		$this->setDisplay();
 	}
 	private function setDisplay(){
 		$document_root = $_SERVER['DOCUMENT_ROOT'];
-		$document_path = $this->document_root . $_SERVER['SCRIPT_NAME'];
-		$documentPath = explode('index.php', $this->document_path);
+		$document_path = $document_root . $_SERVER['SCRIPT_NAME'];
+		$documentPath = explode('index.php', $document_path);
 
 		$smarty = new Smarty;
 		$smarty->debugging = false;

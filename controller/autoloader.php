@@ -11,25 +11,25 @@ class autoloader {
 	}
 
 	public static function autoload_controller($class) {
-		$path = "";
+		$path = "/yard_bio";
 		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/controller/{$class}.php")) {
 			require $_SERVER['DOCUMENT_ROOT'] . $path . "/controller/{$class}.php";
 		}
 	}
 	public static function autoload_view($class) {
-		$path = "";
+		$path = "/yard_bio";
 		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/view/{$class}.php")) {
 			require $_SERVER['DOCUMENT_ROOT'] . $path . "/view/{$class}.php";
 		}
 	}
 	public static function autoload_model($class) {
-		$path = "";
+		$path = "/yard_bio";
 		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/model/{$class}.php")) {
 			require $_SERVER['DOCUMENT_ROOT'] . $path . "/model/{$class}.php";
 		}
 	}
 	public static function autoload_tests($class) {
-		$path = "";
+		$path = "/yard_bio";
 		if (is_readable($_SERVER['DOCUMENT_ROOT'] . $path . "/test/{$class}.php")) {
 			require $_SERVER['DOCUMENT_ROOT'] . $path . "/test/{$class}.php";
 		}
