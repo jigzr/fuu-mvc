@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2021-03-01 15:12:01
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2021-03-03 16:29:17
          compiled from "/Applications/MAMP/htdocs/yard_bio/view/smarty/templates/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11140019603cdc707f8c53-32699955%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b78cf12e4e31680f283d6046715a8f39707d6284' => 
     array (
       0 => '/Applications/MAMP/htdocs/yard_bio/view/smarty/templates/index.tpl',
-      1 => 1614611507,
+      1 => 1614788909,
       2 => 'file',
     ),
   ),
@@ -47,20 +47,70 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <!-- /top tiles -->
 
           <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-8 bio-left">
+            <div class="col-md-9 col-sm-9 col-xs-9 bio-left">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Yard Fitness <small>Bio Entry Application</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Logins</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Members</a>
+                        </li>
+                      </ul>
+                      <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
             </div>
 
-            <div class="col-md-4 col-sm-4 col-xs-4 bio-right">
+            <div class="col-md-3 col-sm-3 col-xs-3 bio-right">
               <video id="preview" style="width: 100%;"></video>
               <div class="status"><h1>Scan QR Code!</h1></div>
               <div class="member_info"><h3></h3></div>
+              <div class="logo">
+                <img src="./view/images/logo.jpg"/>
+              </div>
             </div>
           </div>
           <br />
         </div>
         <!-- /page content -->
 
-        <!-- footer content -->
+<!-- Modal -->
+<div id="qrCodeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">QR Code Generator</h4>
+      </div>
+      <div class="modal-body">
+        <div id="qrinfo"></div>
+        <div id="qrcode"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     <!-- jQuery -->
     <?php echo '<script'; ?>
  src="./view/vendors/jquery/dist/jquery.min.js"><?php echo '</script'; ?>
@@ -149,9 +199,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo '<script'; ?>
  src="./view/build/js/custom.min.js"><?php echo '</script'; ?>
 >
-	
+	  <?php echo '<script'; ?>
+ src="./view/build/js/datatable.js"><?php echo '</script'; ?>
+>
 
 	
+  	<?php echo '<script'; ?>
+ src="./view/src/js/qrcode.js"><?php echo '</script'; ?>
+> 
 	<?php echo '<script'; ?>
  src="./view/src/js/instascan.min.js"><?php echo '</script'; ?>
 > 

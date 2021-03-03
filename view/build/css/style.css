@@ -4,10 +4,11 @@ body{
 .bio-left,
 .bio-right{
     background: #fff;
+    height:84.7vh;
 }
 .bio-right{
-    height:100vh;
-    padding: 1em;
+    height:84.7vh;
+    padding: 0em;
 }
 .bio-right {
     color: #000;
@@ -15,4 +16,24 @@ body{
 }
 .tile_count{
     text-align: center;
+}
+
+.logo img{
+    margin-top: 25em;
+    width: 100%;
+}
+
+.x_panel {
+    height:84.7vh;
+    color: #757575;
+}
+
+#qrCodeModal{
+    color:#000;
+}
+#qrCodeModal .modal-body div{
+    margin:1em;
+}
+#qrCodeModal .modal-body{
+    text-align:center;
 }

@@ -19,3 +19,5 @@
 
 <!-- Custom styling plus plugins -->
 <link href="./view/build/css/style.css" rel="stylesheet">
+<!-- Custom styling datatable -->
+<link href="./view/build/css/datatable.css" rel="stylesheet">

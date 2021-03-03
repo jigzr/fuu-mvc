@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2021-03-01 14:25:25
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2021-03-03 15:54:04
          compiled from "/Applications/MAMP/htdocs/yard_bio/view/smarty/templates/head_meta_properties.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:636940197603cdc709c8547-41877246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c57c005491db89647ee665c675b653f35cf0fe4b' => 
     array (
       0 => '/Applications/MAMP/htdocs/yard_bio/view/smarty/templates/head_meta_properties.tpl',
-      1 => 1614608657,
+      1 => 1614786763,
       2 => 'file',
     ),
   ),
@@ -40,4 +40,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <!-- Custom styling plus plugins -->
-<link href="./view/build/css/style.css" rel="stylesheet"><?php }} ?>
+<link href="./view/build/css/style.css" rel="stylesheet">
+<!-- Custom styling datatable -->
+<link href="./view/build/css/datatable.css" rel="stylesheet"><?php }} ?>

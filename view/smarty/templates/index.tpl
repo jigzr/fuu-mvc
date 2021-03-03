@@ -25,20 +25,70 @@
           <!-- /top tiles -->
 
           <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-8 bio-left">
+            <div class="col-md-9 col-sm-9 col-xs-9 bio-left">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Yard Fitness <small>Bio Entry Application</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Logins</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Members</a>
+                        </li>
+                      </ul>
+                      <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
             </div>
 
-            <div class="col-md-4 col-sm-4 col-xs-4 bio-right">
+            <div class="col-md-3 col-sm-3 col-xs-3 bio-right">
               <video id="preview" style="width: 100%;"></video>
               <div class="status"><h1>Scan QR Code!</h1></div>
               <div class="member_info"><h3></h3></div>
+              <div class="logo">
+                <img src="./view/images/logo.jpg"/>
+              </div>
             </div>
           </div>
           <br />
         </div>
         <!-- /page content -->
 
-        <!-- footer content -->
+<!-- Modal -->
+<div id="qrCodeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">QR Code Generator</h4>
+      </div>
+      <div class="modal-body">
+        <div id="qrinfo"></div>
+        <div id="qrcode"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     <!-- jQuery -->
     <script src="./view/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -79,11 +129,12 @@
 
     <!-- Custom Theme Scripts -->
     <script src="./view/build/js/custom.min.js"></script>
-	
+	  <script src="./view/build/js/datatable.js"></script>
 
 	{* <script src="./view/src/js/webcodecamjquery.js"></script>
 	<script src="./view/src/js/qrcodelib.js"></script>
 	<script src="./view/src/js/DecoderWorker.js"></script> *}
+  	<script src="./view/src/js/qrcode.js"></script> 
 	<script src="./view/src/js/instascan.min.js"></script> 
   <script src="./view/src/js/scripts.js"></script> 
 
