@@ -28,7 +28,7 @@ body{
     color: #757575;
 }
 
-#qrCodeModal{
+.modal{
     color:#000;
 }
 #qrCodeModal .modal-body div{
@@ -36,4 +36,13 @@ body{
 }
 #qrCodeModal .modal-body{
     text-align:center;
+}
+
+.btnAddMember{
+    float: right;
+    position: relative;
+    margin-top: -2.3em;
+}
+.table-condensed{
+    width: 100%;
 }

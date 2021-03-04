@@ -1748,9 +1748,12 @@ if (typeof NProgress != 'undefined') {
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
-			$('#single_cal4').daterangepicker({
+			$('#single_cal4,#registation_date,#date_start,#date_end').daterangepicker({
 			  singleDatePicker: true,
-			  singleClasses: "picker_4"
+			  singleClasses: "picker_4",
+			  locale: {
+				format: 'Y-MM-DD'
+			  }
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});

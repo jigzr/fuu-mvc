@@ -35,7 +35,65 @@ Instascan.Camera.getCameras().then(function (cameras) {
 $(document).ready(function(){
 
   loadMembers();
+  loadCurrentLogins();
 
+  function loadCurrentLogins(){
+    $.ajax({
+      url: url_request,
+      type : 'GET',
+      data : {q:4,t:'today'},
+      contentType: "application/x-www-form-urlencoded", 
+      beforeSend: function () {
+      
+      },
+      success : function(data){
+        var json = JSON.parse(data);
+        var htmlTable = '<table class="table table-striped">';
+        htmlTable += "<thead><tr>";
+        htmlTable += "<th>name</th>";
+        htmlTable += "<th>time</th>";
+        htmlTable += "</tr></thead><tbody>";
+        $.each(json,function(i,e){
+          htmlTable += "<tr>";
+          htmlTable += "<td>"+ e.name +"</td>";
+          htmlTable += "<td>"+ e.log +"</td>";
+          htmlTable += "</tr>";   
+        })
+        htmlTable += "</tbody></table>";
+        $("#tab_content1").html(htmlTable);
+        $(".total_today").html(json.length);
+        $('#tab_content1 .table').DataTable();
+      }
+    });
+    
+    $.ajax({
+      url: url_request,
+      type : 'GET',
+      data : {q:4,t:'all'},
+      contentType: "application/x-www-form-urlencoded", 
+      beforeSend: function () {
+      
+      },
+      success : function(data){
+        var json = JSON.parse(data);
+        var htmlTable = '<table class="table table-striped">';
+        htmlTable += "<thead><tr>";
+        htmlTable += "<th>name</th>";
+        htmlTable += "<th>time</th>";
+        htmlTable += "</tr></thead><tbody>";
+        $.each(json,function(i,e){
+          htmlTable += "<tr>";
+          htmlTable += "<td>"+ e.name +"</td>";
+          htmlTable += "<td>"+ e.log +"</td>";
+          htmlTable += "</tr>";   
+        })
+        htmlTable += "</tbody></table>";
+        $("#tab_content3").html(htmlTable);
+        $(".total_monthly").html(json.length);
+        $('#tab_content3 .table').DataTable();
+      }
+    });      
+  }
   function loadMembers(){
     $.ajax({
       url: url_request,
@@ -73,12 +131,27 @@ $(document).ready(function(){
           htmlTable += "<td>"+ e.date_start +"</td>";
           htmlTable += "<td>"+ e.date_end +"</td>";
           htmlTable += "<td member_id='"+e.id+"' member_name='"+e.name+"'> <button class='btn btn-danger btn-xs btnQrCode' alt='QR Code'><i class='fa fa-qrcode' aria-hidden='true'></i></button>";
-          htmlTable += "<button class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td>";
+          htmlTable += "<button class='btn btn-success btn-xs btnUpdateUser'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td>";
           htmlTable += "</tr>";
         })
         htmlTable += "</tbody></table>";
+        $(".total_member").html(json.length);
         $("#tab_content2").html(htmlTable);
-
+        $(".btnUpdateUser").click(function(){
+          $("#updateUserModal").modal("show");
+          var data = $(this).parent().parent();
+          var id = data.find("td:eq(0)").html();
+          $('#updateUserModal #id').val(data.find("td:eq(0)").html());
+          $('#updateUserModal #name').val(data.find("td:eq(1)").html());
+          $('#updateUserModal #address').val(data.find("td:eq(2)").html());
+          $('#updateUserModal #contact_number').val(data.find("td:eq(3)").html());
+          $('#updateUserModal #registration_date').val(data.find("td:eq(4)").html());
+          $('#updateUserModal #scheme').val(data.find("td:eq(5)").html());
+          $('#updateUserModal #status').val(data.find("td:eq(6)").html());
+          $('#updateUserModal #schedule').val(data.find("td:eq(7)").html());
+          $('#updateUserModal #date_start').val(data.find("td:eq(8)").html());
+          $('#updateUserModal #date_end').val(data.find("td:eq(9)").html());
+        });
         $(".btnQrCode").click(function(){
           $("#qrCodeModal").modal('show');
           // Clear Previous QR Code
@@ -92,8 +165,62 @@ $(document).ready(function(){
           // Generate and Output QR Code
           $('#qrcode').qrcode({width: 300,height:300,text:$(this).parent().attr('member_id')+"-"+$(this).parent().attr('member_name')});
         });
-        $('.table').DataTable();
+        $('#tab_content2 .table').DataTable();
       }
     });
   }
+
+  $(".btnSubmitAddUser").click(function(){
+    $.ajax({
+      url: url_request,
+      type : 'GET',
+      data : {q:3,
+        name:$('#addUserModal #name').val(),
+        address:$('##addUserModal address').val(),
+        registation_date:$('#addUserModal #registation_date').val(),
+        status:$('#addUserModal #status').val(),
+        contact_number:$('#addUserModal #contact_number').val(),
+        scheme:$('#addUserModal #scheme').val(),
+        date_start:$('#addUserModal #date_start').val(),
+        date_end:$('#addUserModal #date_end').val(),
+        schedule:$('#addUserModal #schedule').val()},
+      contentType: "application/x-www-form-urlencoded", 
+      beforeSend: function () {
+      
+      },
+      success : function(data){
+        if (data == 1) {
+          alert("Member Added");
+          location.reload();
+        }   
+      } 
+  });
+});
+  $(".btnSubmitUpdateUser").click(function(){
+      $.ajax({
+        url: url_request,
+        type : 'GET',
+        data : {q:5,
+          id:$('#updateUserModal #id').val(),
+          name:$('#updateUserModal #name').val(),
+          address:$('#updateUserModal address').val(),
+          registation_date:$('#updateUserModal #registation_date').val(),
+          status:$('#updateUserModal #status').val(),
+          contact_number:$('#updateUserModal #contact_number').val(),
+          scheme:$('#updateUserModal #scheme').val(),
+          date_start:$('#updateUserModal #date_start').val(),
+          date_end:$('#updateUserModal #date_end').val(),
+          schedule:$('#updateUserModal #schedule').val()},
+        contentType: "application/x-www-form-urlencoded", 
+        beforeSend: function () {
+        
+        },
+        success : function(data){
+          if (data == 1) {
+            alert("Member Updated");
+            location.reload();
+          }   
+        } 
+    });
+  });
 });
