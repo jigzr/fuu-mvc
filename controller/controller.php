@@ -48,6 +48,7 @@ class controller {
 			}
         }
 	}
+	//use this to authenticate basic auth or token if present
 	private function authenticate(){
 		if(isset($_SERVER["PHP_AUTH_USER"]) && isset($_SERVER["PHP_AUTH_PW"])){
 			$token = $this->validateLogin($_SERVER["PHP_AUTH_USER"],$_SERVER["PHP_AUTH_PW"]);
@@ -57,7 +58,9 @@ class controller {
 			$validate = json_decode($this->validateLogin($token[0],$token[1]));
 			$token = json_encode($validate);
 		}
-		return $token;
+		$check = json_decode($token);
+		if(isset($check->token)) return true; 
+		else return false;
 	}
 	private function sanitizeRequest($active=true,$type=null){
 		if($active){
