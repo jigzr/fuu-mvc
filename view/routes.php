@@ -31,7 +31,7 @@ class routes {
 		$appDirectory = [];
 		$permDir = ['controller','model','view','.git','tests','vendor'];
 		foreach ($directory as $key => $value) {
-			in_array($value,$permDir) ? '' : is_dir($value) ? array_push($appDirectory,$value) : '';
+			(in_array($value,$permDir) ? '' : is_dir($value)) ? array_push($appDirectory,$value) : '';
 		}
 		return $appDirectory;
 	}
