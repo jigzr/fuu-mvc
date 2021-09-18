@@ -21,7 +21,13 @@ class controller {
 			} else if($path == "auth"){
 				echo $this->authenticate();
 			} else {
-
+				if ($path == "add"){	
+					echo $this->addRecord(@$_POST['model'],@$_POST['data']);
+				} else if ($path == "update"){	
+					echo $this->updateRecord(@$_POST['model'],@$_POST['data'],@$_POST['id']);
+				} else if ($path == "view"){	
+					echo $this->viewRecord(@$_POST['model'],@$_POST['id']);
+				}
 			}
 		}
 	}
