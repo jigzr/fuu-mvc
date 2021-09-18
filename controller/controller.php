@@ -100,5 +100,83 @@ class controller {
             return $arr;    
         }
     }	
+
+
+	/**
+	 * Insert a record
+	 * 
+	 * @return return status code if the record is successfully added or not
+	 **/
+	private function addRecord($model,$data){
+		$model = new records();  
+		$result = '';
+		try{
+			//check if table exist
+			if ($model->checkTable($model)){
+				$result = $model->add($model,$data);  
+			} else {
+				$result = "The table does not exist."
+			}               
+		} 
+		catch(PDOException $e){
+            //do logging events
+            utilities::logger($e, "controller->addRecord");
+        }
+        finally{
+			echo json_encode($result);  
+        }
+	}
+
+	/**
+	 * Update a record
+	 * 
+	 * @return return status code if the record is successfully added or not
+	 **/
+	private function updateRecord($model,$data,$id){
+		$model = new records();  
+		$result = '';
+		try{
+			//check if table exist
+			if ($model->checkTable($model)){
+				$result = $model->add($model,$data,$id);  
+			} else {
+				$result = "The table does not exist."
+			}                 
+		} 
+		catch(PDOException $e){
+            //do logging events
+            utilities::logger($e, "controller->updateRecord");
+        }
+        finally{
+			echo json_encode($result);  
+        }
+	}
+
+	/**
+	 * View a record/s by default it will fetch all active records if $id has no value
+	 * 
+	 * @return return status code if the record is successfully added or not
+	 **/
+	private function viewRecord($model,$id=NULL){
+		$mode = new records();
+		$result = '';
+		try {
+			//check if table exist
+			if ($model->checkTable($model)){
+				$result = $model->view($model,$id);  
+			} else {
+				$result = "The table does not exist."
+			}   
+		}
+		catch(PDOException $e){
+			//do logging events
+			utilities::logger($e, "controller->viewRecord");
+		}
+		finally{
+			echo json_encode($result);  
+		}
+	}
+
+
 }
 ?>
