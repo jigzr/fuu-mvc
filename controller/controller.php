@@ -115,7 +115,7 @@ class controller {
 			if ($model->checkTable($model)){
 				$result = $model->add($model,$data);  
 			} else {
-				$result = "The table does not exist."
+				$result = "The table does not exist.";
 			}               
 		} 
 		catch(PDOException $e){
@@ -140,7 +140,7 @@ class controller {
 			if ($model->checkTable($model)){
 				$result = $model->add($model,$data,$id);  
 			} else {
-				$result = "The table does not exist."
+				$result = "The table does not exist.";
 			}                 
 		} 
 		catch(PDOException $e){
@@ -165,7 +165,7 @@ class controller {
 			if ($model->checkTable($model)){
 				$result = $model->view($model,$id);  
 			} else {
-				$result = "The table does not exist."
+				$result = "The table does not exist.";
 			}   
 		}
 		catch(PDOException $e){
