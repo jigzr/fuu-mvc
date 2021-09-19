@@ -25,7 +25,7 @@ class controller {
 					echo $this->addRecord(@$_POST['model'],@$_POST['data']);
 				} else if ($path == "update"){	
 					echo $this->updateRecord(@$_POST['model'],@$_POST['data'],@$_POST['id']);
-				} else if ($path == "view"){	
+				} else if ($path == "views"){	
 					echo $this->viewRecord(@$_POST['model'],@$_POST['id']);
 				}
 			}
@@ -113,13 +113,13 @@ class controller {
 	 * 
 	 * @return return status code if the record is successfully added or not
 	 **/
-	private function addRecord($model,$data){
+	private function addRecord($table,$data){
 		$model = new records();  
 		$result = '';
 		try{
 			//check if table exist
-			if ($model->checkTable($model)){
-				$result = $model->add($model,$data);  
+			if ($model->checkTable($table)){
+				$result = $model->add($table,$data);  
 			} else {
 				$result = "The table does not exist.";
 			}               
@@ -129,7 +129,7 @@ class controller {
             utilities::logger($e, "controller->addRecord");
         }
         finally{
-			echo json_encode($result);  
+			return json_encode(array("result" => $result));  
         }
 	}
 
@@ -138,13 +138,13 @@ class controller {
 	 * 
 	 * @return return status code if the record is successfully added or not
 	 **/
-	private function updateRecord($model,$data,$id){
+	private function updateRecord($table,$data,$id){
 		$model = new records();  
 		$result = '';
 		try{
 			//check if table exist
-			if ($model->checkTable($model)){
-				$result = $model->add($model,$data,$id);  
+			if ($model->checkTable($table)){
+				$result = $model->add($table,$data,$id);  
 			} else {
 				$result = "The table does not exist.";
 			}                 
@@ -154,7 +154,7 @@ class controller {
             utilities::logger($e, "controller->updateRecord");
         }
         finally{
-			echo json_encode($result);  
+			return json_encode(array("result" => $result));   
         }
 	}
 
@@ -163,13 +163,13 @@ class controller {
 	 * 
 	 * @return return status code if the record is successfully added or not
 	 **/
-	private function viewRecord($model,$id=NULL){
-		$mode = new records();
+	private function viewRecord($table,$id=NULL){
+		$model = new records();
 		$result = '';
 		try {
 			//check if table exist
-			if ($model->checkTable($model)){
-				$result = $model->view($model,$id);  
+			if ($model->checkTable($table)){
+				$result = $model->view($table,$id);  
 			} else {
 				$result = "The table does not exist.";
 			}   
@@ -179,7 +179,7 @@ class controller {
 			utilities::logger($e, "controller->viewRecord");
 		}
 		finally{
-			echo json_encode($result);  
+			return json_encode(array("result" => $result));
 		}
 	}
 

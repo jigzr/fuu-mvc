@@ -1,4 +1,7 @@
 <?php
+
+defined('CERP_DBNAME') || define('CERP_DBNAME', 'philmed');
+
 class model
 {
 	private $DB_server = 'localhost';

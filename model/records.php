@@ -6,19 +6,19 @@ class records
 
     public function checkTable($table){
         $pdo = (new model())->setDB();
-        $model = new model(); 
+        $row = [];
         try {
             //code...
             $query = $pdo->prepare(
                 "SELECT * 
                 FROM information_schema.tables
-                WHERE table_schema = ? 
-                AND table_name = ?
+                WHERE TABLE_SCHEMA = ? 
+                AND TABLE_NAME = ?
                 LIMIT 1;"
-            )
-            $query->execute([$model->DB_name,$table]);
+            );
+            $query->execute([CERP_DBNAME,$table]);
             $row = $query->fetchAll(PDO::FETCH_ASSOC);
-
+            
         } catch (Exception $e) {
             //do logging events
             utilities::logger($e, "records->checkTable");
