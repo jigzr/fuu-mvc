@@ -1,6 +1,6 @@
 <?php
 require_once "./controller/autoloader.php";
-
+ini_set('memory_limit','-1');
 class controller {
 
 	public function __construct() {
@@ -21,12 +21,12 @@ class controller {
 			} else if($path == "auth"){
 				echo $this->authenticate();
 			} else {
-				if ($path == "add"){	
+				if ($path == "adds"){	
 					echo $this->addRecord(@$_POST['model'],@$_POST['data']);
-				} else if ($path == "update"){	
+				} else if ($path == "updates"){	
 					echo $this->updateRecord(@$_POST['model'],@$_POST['data'],@$_POST['id']);
 				} else if ($path == "views"){	
-					echo $this->viewRecord(@$_POST['model'],@$_POST['id']);
+					echo $this->viewRecord(@$_POST['model'],@$_POST);
 				}
 			}
 		}
@@ -144,7 +144,7 @@ class controller {
 		try{
 			//check if table exist
 			if ($model->checkTable($table)){
-				$result = $model->add($table,$data,$id);  
+				$result = $model->update($table,$data,$id);  
 			} else {
 				$result = "The table does not exist.";
 			}                 
@@ -163,13 +163,13 @@ class controller {
 	 * 
 	 * @return return status code if the record is successfully added or not
 	 **/
-	private function viewRecord($table,$id=NULL){
+	private function viewRecord($table,$data=NULL){
 		$model = new records();
 		$result = '';
 		try {
 			//check if table exist
 			if ($model->checkTable($table)){
-				$result = $model->view($table,$id);  
+				$result = $model->view($table,$data);  
 			} else {
 				$result = "The table does not exist.";
 			}   
